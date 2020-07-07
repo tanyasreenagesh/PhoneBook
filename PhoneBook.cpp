@@ -59,11 +59,12 @@ void PhoneBook::deleteContact(const std::string& fullName, const std::string& nu
                 book.erase(book.begin()+i); //might have to -1
             }
         }
+        totalContacts--;
     }
     
 }
 
-void PhoneBook::updateContact(const std::string& fullName, const std::string& number, const std::string& newName, const std::string& email, const std::string& addy)
+void PhoneBook::updateContact(const std::string& fullName, const std::string& number, const std::string& newName, const std::string& newNumber, const std::string& email, const std::string& addy)
 {
     if(!contains(fullName,number))
     {
@@ -79,7 +80,7 @@ void PhoneBook::updateContact(const std::string& fullName, const std::string& nu
         {
             if (book[i].fullName == fullName && book[i].number == number)
             {
-                book[i] = {fullName,number,email,addy};
+                book[i] = {newName,newNumber,email,addy};
             }
         }
     }

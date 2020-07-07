@@ -24,7 +24,7 @@ public:
 
     void deleteContact(const std::string& fullName, const std::string& number);
 
-    void updateContact(const std::string& fullName, const std::string& number, const std::string& newName, const std::string& email = "", const std::string& addy = "");
+    void updateContact(const std::string& fullName, const std::string& number, const std::string& newName, const std::string& newNumber, const std::string& email = "", const std::string& addy = "");
 
     void findContact(const std::string& cName);
 
