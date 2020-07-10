@@ -3,7 +3,7 @@
 #include "PhoneBook.hpp"
 
 
-void add(PhoneBook pb)
+void add(PhoneBook& pb)
 {
     std::string fullName, number, email, address;
     std::cout << "Who would you like to add to the PhoneBook?" << std::endl;
@@ -18,67 +18,77 @@ void add(PhoneBook pb)
     std::getline(std::cin,address);
 
     pb.addNewContact(fullName, number, email, address);
-    std::cout << fullName << " has been added to your PhoneBook." << std::endl;
+    std::cout << "\n" << fullName << " has been added to your PhoneBook." << std::endl;
 }
 
-void deleteC(PhoneBook pb)
+void deleteC(PhoneBook& pb)
 {
     std::string fullName, number;
     std::cout << "Who would you like to delete from the PhoneBook?" << std::endl;
     std::cout << "Full Name: ";
+    std::cin.ignore();
     std::getline(std::cin,fullName);
     std::cout << "Number:    ";
     std::getline(std::cin,number);
 
     pb.deleteContact(fullName, number);
-    std::cout << fullName << " has been deleted from your PhoneBook." << std::endl;
+    std::cout << "\n" << fullName << " has been deleted from your PhoneBook." << std::endl;
 }
 
-void update(PhoneBook pb)
+void update(PhoneBook& pb)
 {
     std::string fullName, number, newName, newNumber, newEmail, newAddress;
     std::cout << "Which contact would you like to update?" << std::endl;
     std::cout << "Full Name: ";
+    std::cin.ignore();
     std::getline(std::cin,fullName);
     std::cout << "Number:    ";
     std::getline(std::cin,number);
 
     std::cout << "Please enter the updated information." << std::endl;
     std::cout << "Full Name: ";
-    std::getline(std::cin,fullName);
+    std::getline(std::cin,newName);
     std::cout << "Number:    ";
-    std::getline(std::cin,number); 
+    std::getline(std::cin,newNumber); 
     std::cout << "Email:     ";
     std::getline(std::cin,newEmail);
     std::cout << "Address:   ";
     std::getline(std::cin,newAddress);   
 
     pb.updateContact(fullName, number, newName, newNumber, newEmail, newAddress);
-    std::cout << fullName << "'s information has been updated in your PhoneBook." << std::endl;
+    std::cout << "\n" << fullName << "'s information has been updated in your PhoneBook." << std::endl;
 }
 
 void find(PhoneBook pb)
 {
     std::string name;
     std::cout << "Enter name of the contact you would like to look up: ";
+    std::cin.ignore();
     std::getline(std::cin,name);
-
+    std::cout << "\n";
     pb.findContact(name);
 }
 
 void print(PhoneBook pb)
 {
-    std::cout << "Here is your complete PhoneBook." << std::endl;
+    std::cout << "Here is your complete PhoneBook.\n" << std::endl;
     pb.printBook();
-    std::cout << std::endl;
+    std::cout << std::endl << std::endl;
 }
 
 void check(PhoneBook pb)
 {
-    std::cout << "You currently have " << pb.numOfContacts() << " contacts in your PhoneBook." << std::endl;
+    int num = pb.numOfContacts();
+    if(num == 1)
+        std::cout << "You have 1 contact in your PhoneBook." << std::endl;
+    else
+    {
+        std::cout << "You have " << num << " contacts in your PhoneBook." << std::endl;
+
+    }
 }
 
-void processCommand(const std::string& c, PhoneBook pb)
+void processCommand(const std::string& c, PhoneBook& pb)
 {
     if(c == "A")
     {
@@ -115,17 +125,18 @@ std::string promptUser()
 {
     std::string option;
 
-    std::cout << "What would you like to do?" << std::endl;
-    std::cout << "A : Add a new contact?" << std::endl;
-    std::cout << "D : Delete a contact?" << std::endl;
-    std::cout << "U : Update a contact?" << std::endl;
-    std::cout << "F : Find a contact?" << std::endl;
-    std::cout << "P : Print your PhoneBook?" << std::endl;
-    std::cout << "C : Check how many contacts are stored?" << std::endl;
-    std::cout << "Q : Exit the PhoneBook?" << std::endl;
+    std::cout << "\nMENU" << std::endl;
+    std::cout << "  A : Add a new contact" << std::endl;
+    std::cout << "  D : Delete a contact" << std::endl;
+    std::cout << "  U : Update a contact" << std::endl;
+    std::cout << "  F : Find a contact" << std::endl;
+    std::cout << "  P : Print your PhoneBook" << std::endl;
+    std::cout << "  C : Check how many contacts are stored" << std::endl;
+    std::cout << "  Q : Exit the PhoneBook" << std::endl;
 
-    std::cout << "Enter your option: ";
+    std::cout << "\nEnter your option: ";
     std::cin >> option;
+    std::cout << std::endl;
 
     return option;
 }
@@ -162,6 +173,7 @@ int main()
     // Find a solution.
 
     PhoneBook pb("Owner");
+    
 
     std::string option;
     option = promptUser();
@@ -174,7 +186,7 @@ int main()
         option = promptUser();
     }
 
-    std::cout << "Your PhoneBook is now closed." << std::endl;
+    std::cout << "Your PhoneBook is now closed.\n" << std::endl;
     return 0;
 }
 
