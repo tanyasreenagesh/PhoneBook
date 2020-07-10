@@ -88,6 +88,30 @@ void check(PhoneBook pb)
     }
 }
 
+void viewOwner(PhoneBook& pb)
+{
+    std::cout << "Name of the PhoneBook owner: " << pb.getOwner() << std::endl;
+}
+
+void changeOwner(PhoneBook& pb)
+{
+    std::string newName, ans;
+    std::string oldName = pb.getOwner();
+    std::cout << "Enter the new owner name: ";
+    std::cin.ignore();
+    std::getline(std::cin,newName);
+
+    std::cout << "Are you sure you would like to change owner name "
+    "from " << oldName << " to " << newName << "? (Y/N)" << std::endl; 
+    std::cin >> ans;
+
+    if(ans == "Y")
+    {
+        pb.setOwner(newName);
+        std::cout << "\nOwner name has been changed successfully." << std::endl;
+    }      
+}
+
 void processCommand(const std::string& c, PhoneBook& pb)
 {
     if(c == "A")
@@ -114,6 +138,14 @@ void processCommand(const std::string& c, PhoneBook& pb)
     {
         check(pb);
     }
+    else if(c == "V")
+    {
+        viewOwner(pb);
+    }
+    else if(c == "O")
+    {
+        changeOwner(pb);
+    }
     else
     {
         std::cout << "Please enter a valid option." << std::endl;
@@ -132,6 +164,8 @@ std::string promptUser()
     std::cout << "  F : Find a contact" << std::endl;
     std::cout << "  P : Print your PhoneBook" << std::endl;
     std::cout << "  C : Check how many contacts are stored" << std::endl;
+    std::cout << "  V : View owner name" << std::endl;
+    std::cout << "  O : Change owner's name" << std::endl;
     std::cout << "  Q : Exit the PhoneBook" << std::endl;
 
     std::cout << "\nEnter your option: ";
@@ -172,7 +206,11 @@ int main()
     // Why is the class object getting refreshed every time?
     // Find a solution.
 
-    PhoneBook pb("Owner");
+    std::string owner;
+    std::cout << "Enter name of PhoneBook owner: ";
+    std::getline(std::cin,owner);
+
+    PhoneBook pb(owner);
     
 
     std::string option;

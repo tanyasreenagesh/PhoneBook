@@ -99,9 +99,19 @@ void PhoneBook::findContact(const std::string& cName)
         
     }
     if (findResults.empty())
-        std::cout << "This contact does not exist in your phone book." << std::endl;
+        std::cout << "No such contacts exist in your phone book." << std::endl;
     else
         printSearchResults();
+}
+
+std::string PhoneBook::getOwner()
+{
+    return ownerName;
+}
+
+void PhoneBook::setOwner(const std::string& newName)
+{
+    ownerName = newName;
 }
 
 unsigned int PhoneBook::numOfContacts()

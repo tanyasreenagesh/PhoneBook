@@ -28,6 +28,10 @@ public:
 
     void findContact(const std::string& cName);
 
+    std::string getOwner();
+
+    void setOwner(const std::string& newName);
+
     unsigned int numOfContacts();
 
     void printBook();
