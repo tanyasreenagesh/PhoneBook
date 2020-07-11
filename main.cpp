@@ -105,7 +105,7 @@ void changeOwner(PhoneBook& pb)
     "from " << oldName << " to " << newName << "? (Y/N)" << std::endl; 
     std::cin >> ans;
 
-    if(ans == "Y")
+    if(ans == "Y" || ans == "y")
     {
         pb.setOwner(newName);
         std::cout << "\nOwner name has been changed successfully." << std::endl;
@@ -114,35 +114,35 @@ void changeOwner(PhoneBook& pb)
 
 void processCommand(const std::string& c, PhoneBook& pb)
 {
-    if(c == "A")
+    if(c == "A" || c == "a")
     {
         add(pb);
     }
-    else if(c == "D")
+    else if(c == "D" || c == "d")
     {
         deleteC(pb);
     }
-    else if(c == "U")
+    else if(c == "U" || c == "u")
     {
         update(pb);
     }
-    else if(c == "F")
+    else if(c == "F" || c == "f")
     {
         find(pb);
     }
-    else if(c == "P")
+    else if(c == "P" || c == "p")
     {
         print(pb);
     }
-    else if(c == "C")
+    else if(c == "C" || c == "c")
     {
         check(pb);
     }
-    else if(c == "V")
+    else if(c == "V" || c == "v")
     {
         viewOwner(pb);
     }
-    else if(c == "O")
+    else if(c == "O" || c == "o")
     {
         changeOwner(pb);
     }
@@ -157,7 +157,7 @@ std::string promptUser()
 {
     std::string option;
 
-    std::cout << "\nMENU" << std::endl;
+    std::cout << "\n------------------- MENU -------------------" << std::endl;
     std::cout << "  A : Add a new contact" << std::endl;
     std::cout << "  D : Delete a contact" << std::endl;
     std::cout << "  U : Update a contact" << std::endl;
@@ -167,6 +167,7 @@ std::string promptUser()
     std::cout << "  V : View owner name" << std::endl;
     std::cout << "  O : Change owner's name" << std::endl;
     std::cout << "  Q : Exit the PhoneBook" << std::endl;
+    std::cout << "--------------------------------------------" << std::endl;
 
     std::cout << "\nEnter your option: ";
     std::cin >> option;

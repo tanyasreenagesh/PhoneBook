@@ -36,7 +36,7 @@ void PhoneBook::addNewContact(const std::string& fullName, const std::string& nu
         std::string ans;
         std::cout << "This contact is already in the book. Would you like to update their information instead? (Y/N): " << std::endl;
         std::cin >> ans;
-        if (ans == "Y")
+        if (ans == "Y" || ans == "y")
             updateContact(fullName, number, email, addy);
     }
     else
@@ -71,7 +71,7 @@ void PhoneBook::updateContact(const std::string& fullName, const std::string& nu
         std::string ans;
         std::cout << "This contact does not exist in your phone book. Would you like to add contact? (Y/N): " << std::endl;
         std::cin >> ans;
-        if (ans == "Y")
+        if (ans == "Y" || ans == "y")
             addNewContact(newName, number, email, addy);
     }
     else
