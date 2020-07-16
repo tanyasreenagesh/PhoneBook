@@ -1,5 +1,5 @@
 # PhoneBook
-Written in C++, this PhoneBook can store any number of personal contacts for multiple owners. Users may add, update, or delete contacts by name and number. They may also find contacts by name or number.
+Written in C++ (in Linux environment), this PhoneBook can store any number of personal contacts for multiple owners. Users may add, update, or delete contacts by name and number. They may also find contacts by name or number.
 
 ## Special Functionality
 ### Storing Contacts
